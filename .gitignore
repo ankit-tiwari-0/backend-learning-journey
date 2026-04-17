@@ -1,0 +1,5 @@
+# ignore node modules everywhere
+node_modules/
+
+# (optional) ignore chapter folders
+*chapter*/
