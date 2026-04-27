@@ -40,6 +40,16 @@ app.delete('/notes/:index', (req, res) => {
   });
 });  
 
+app.patch("/notes/:index", (req, res) =>{
+  const ind = req.params.index;
+  const description =req.body.description
+
+  notes[ ind].description = description
+
+  res.status(200).json({
+    message:"note update successfully"
+  })
+})
 
 
 module.exports = app
