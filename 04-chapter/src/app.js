@@ -19,4 +19,20 @@ app.post("/notes",async (req, res) =>{
     })
 })
 
+app.get("/notes",async (req, res) =>{
+    const note = await noteModel.find();
+
+    /*
+    two way to find 
+    find => u always get [] if there is  value then [{}],
+    findone => if get data then {} not then null
+    */
+
+    res.status(200).json({
+    message: "Notes fetched Successfully",
+    note: note
+   })
+} )
+
+  
 module.exports = app
