@@ -1,13 +1,14 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
 import CreatePost from './pages/CreatePost'
+import Feed from './pages/Feed'
 
 const App = () => {
   return (
     <div>
        <Routes>
       <Route path='/create-post' element={<CreatePost />} />
-      <Route path='/about' element={<h1>hello about</h1>} />
+      <Route path='/feed' element={<Feed />} />
     </Routes>
     </div>
   )
