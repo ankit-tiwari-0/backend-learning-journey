@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
+import axios from 'axios';
 
 const Feed = () => {
 
@@ -7,11 +8,16 @@ const Feed = () => {
         [
             {
                 _id: "1",
-                image:"https://images.unsplash.com/photo-1776715139556-f7d420661a89?q=80&w=685&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                image:"https://images.unsplash.com/photo-1777223128245-0875df686de5?q=80&w=736&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 caption:"Beautiful Scenery"
-            }
+            },
         ]
     )
+        
+    useEffect(() =>{
+      axios.get("http://localhost:3000/posts")
+    })
+
   return (
     <section className='feed-name'>
        
