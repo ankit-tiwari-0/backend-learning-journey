@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route, Router, Routes } from 'react-router-dom'
 import Nav from './pages/Nav'
+import About from './pages/About'
 
 const App = () => {
   return (
@@ -8,7 +9,7 @@ const App = () => {
       <Nav />
 
       <Routes>
-        <Route path='/' />
+        <Route path='/about' element={ <About />} />
       </Routes>
     </div>
   )
