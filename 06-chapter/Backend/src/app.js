@@ -29,7 +29,24 @@ app.post('/add-post', uploadd.single("image"), async (req,res)=>{
      })
 })
 
+app.get('/get-server', async(req,res)=>{
+    const datawa = await postModel.find()
 
+    return res.status(200).json({
+        message: "bsdk aa gya main server se bol",
+        datawa
+    })
+})
+
+app.delete('/delete/:id', async(req,res)=>{
+    const deletepost = await postModel.findByIdAndDelete(
+        req.params.id
+    )
+    return res.status(200).json({
+        message: 'post deleted',
+        deletepost
+    })
+})
 
 
 
