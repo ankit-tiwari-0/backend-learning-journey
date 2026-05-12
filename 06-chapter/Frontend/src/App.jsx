@@ -2,6 +2,7 @@ import React from 'react'
 import { Route, Router, Routes } from 'react-router-dom'
 import Nav from './pages/Nav'
 import About from './pages/About'
+import UPload from './pages/UPload'
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
 
       <Routes>
         <Route path='/about' element={ <About />} />
+        <Route path='/gallary' element={ <UPload /> } />
       </Routes>
     </div>
   )

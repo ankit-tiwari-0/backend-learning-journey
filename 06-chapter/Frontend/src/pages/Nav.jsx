@@ -15,7 +15,10 @@ const Nav = () => {
         <div className='flex gap-10  items-center'>
             <div className='flex items-center gap-2 '>
                 <RiApps2Line  className='text-2xl text-blue-700'  />
+                <Link to='/gallary' className='flex items-center gap-2'>
+                
                 <h2 className=' hover:border-b-2 text-xl text-blue-700 font-semibold'>Gallary</h2>
+                </Link>
             </div>
 
             <div className='flex gap-1 items-center'>

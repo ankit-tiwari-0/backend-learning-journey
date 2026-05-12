@@ -71,7 +71,7 @@ const About = () => {
 
             </div>
 
-            <div className='mt-10 bg-gradient-to-r from-blue-700 to-purple-600 rounded-2xl p-8 text-white'>
+            <div className='mt-10 bg-linear-to-r from-blue-700 to-purple-600 rounded-2xl p-8 text-white'>
 
                 <h2 className='text-3xl font-bold mb-4'>
                     Project Goal
