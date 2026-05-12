@@ -1,4 +1,6 @@
 import React from 'react'
+import axios from "axios"
+
 import { RiUploadCloudLine , RiUploadCloud2Line } from "react-icons/ri"
 const UPload = () => {
   return (
