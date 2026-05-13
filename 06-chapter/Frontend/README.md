@@ -1,16 +1,87 @@
-# React + Vite
+# 📸 Mini Gallery
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Mini Gallery is a modern MERN stack image sharing application where users can upload, explore, like, and manage beautiful image posts with categories and captions.
 
-Currently, two official plugins are available:
+Built to practice full-stack development concepts including CRUD operations, image uploads, cloud storage integration, API handling, and responsive frontend design.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+# 🚀 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+✅ Upload Images  
+✅ Add Captions & Categories  
+✅ Like Posts  
+✅ Delete Posts  
+✅ Responsive Modern UI  
+✅ Image Preview Before Upload  
+✅ Cloud Image Storage using ImageKit  
+✅ MongoDB Database Integration  
+✅ REST API Architecture  
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# 🛠️ Tech Stack
+
+## Frontend
+- React.js
+- Tailwind CSS
+- React Router DOM
+- Axios
+- React Icons
+
+## Backend
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- Multer
+- ImageKit
+
+---
+
+# 📂 Project Structure
+
+```bash
+Mini-Gallery/
+│
+├── Frontend/
+│   ├── src/
+│   ├── components/
+│   ├── pages/
+│   └── services/
+│
+├── Backend/
+│   ├── models/
+│   ├── routes/
+│   ├── services/
+│   └── server.js
+
+🎯 Learning Goals
+
+This project helped me understand:
+
+   🔺React State Management
+   🔺REST APIs
+   🔺File Uploads using Multer
+   🔺Cloud Storage Integration
+   🔺Frontend & Backend Connection
+   🔺MongoDB Database Handling
+   🔺Responsive UI Design
+🌟 Future Improvements
+
+
+  . Authentication System
+  . Dark Mode
+  .  Comments Feature
+  .  Search & Filter
+  .  Pagination
+  .  User Profiles
+
+
+
+
+    👨‍💻 Author
+
+Ankit Tiwari
+
+Learning MERN Stack step by step 🚀
