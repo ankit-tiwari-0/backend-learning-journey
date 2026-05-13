@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { RiDeleteBinLine } from "react-icons/ri"
-
+import axios from 'axios'
 const Feed = () => {
 
     const [post, setpost] = useState([
@@ -20,6 +20,40 @@ const Feed = () => {
 
     ])
 
+
+    useEffect(()=>{
+        axios.get("http://localhost:3000/get-server")
+        .then((res)=>{
+       
+            setpost(res.data.datawa)
+        })
+    })
+
+    const handleDelete = async(id) => {
+
+    try {
+
+        await axios.delete(
+
+            `http://localhost:3000/delete/${id}`
+
+        )
+
+        setPosts(
+
+            posts.filter(
+                (p) => p._id !== id
+            )
+
+        )
+
+    } catch(error){
+
+        console.log(error)
+
+    }
+
+}
     return (
 
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 my-16  px-8 '>
@@ -38,6 +72,8 @@ const Feed = () => {
                          <div className='relative bg-white rounded-2xl overflow-hidden shadow-md'>
 
     <button
+    onClick={() => handleDelete(post._id)}
+
        className='absolute top-4 right-4 bg-white p-2 rounded-xl shadow-md text-red-500 hover:bg-red-50 transition-all'
     >
 
