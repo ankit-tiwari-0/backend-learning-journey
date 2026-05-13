@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { RiDeleteBinLine } from "react-icons/ri"
 import axios from 'axios'
+import { formatDistanceToNow } from "date-fns"
 const Feed = () => {
 
     const [post, setpost] = useState([
@@ -9,7 +10,7 @@ const Feed = () => {
             _id: "1",
 
             image:
-            "https://images.unsplash.com/photo-1778512828600-4a6540a1a115?w=900&auto=format&fit=crop&q=60",
+                "https://images.unsplash.com/photo-1778512828600-4a6540a1a115?w=900&auto=format&fit=crop&q=60",
 
             caption: "Peaceful morning at the lake 🌿",
 
@@ -21,39 +22,39 @@ const Feed = () => {
     ])
 
 
-    useEffect(()=>{
+    useEffect(() => {
         axios.get("http://localhost:3000/get-server")
-        .then((res)=>{
-       
-            setpost(res.data.datawa)
-        })
+            .then((res) => {
+
+                setpost(res.data.datawa)
+            })
     })
 
-    const handleDelete = async(id) => {
+    const handleDelete = async (id) => {
 
-    try {
+        try {
 
-        await axios.delete(
+            await axios.delete(
 
-            `http://localhost:3000/delete/${id}`
+                `http://localhost:3000/delete/${id}`
 
-        )
-
-        setPosts(
-
-            posts.filter(
-                (p) => p._id !== id
             )
 
-        )
+            setPosts(
 
-    } catch(error){
+                posts.filter(
+                    (p) => p._id !== id
+                )
 
-        console.log(error)
+            )
+
+        } catch (error) {
+
+            console.log(error)
+
+        }
 
     }
-
-}
     return (
 
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 my-16  px-8 '>
@@ -69,25 +70,25 @@ const Feed = () => {
                     >
 
                         {/* IMAGE */}
-                         <div className='relative bg-white rounded-2xl overflow-hidden shadow-md'>
+                        <div className='relative bg-white rounded-2xl overflow-hidden shadow-md'>
 
-    <button
-    onClick={() => handleDelete(post._id)}
+                            <button
+                                onClick={() => handleDelete(post._id)}
 
-       className='absolute top-4 right-4 bg-white p-2 rounded-xl shadow-md text-red-500 hover:bg-red-50 transition-all'
-    >
+                                className='absolute top-4 right-4 bg-white p-2 rounded-xl shadow-md text-red-500 hover:bg-red-50 transition-all'
+                            >
 
-       <RiDeleteBinLine className='text-xl' />
+                                <RiDeleteBinLine className='text-xl' />
 
-    </button>
+                            </button>
 
-    <img
-       src={post.image}
-       alt={post.caption}
-       className='w-full h-72 object-cover'
-    />
+                            <img
+                                src={post.image}
+                                alt={post.caption}
+                                className='w-full h-72 object-cover'
+                            />
 
-</div>
+                        </div>
                         {/* CONTENT */}
 
                         <div className='p-4'>
@@ -117,7 +118,20 @@ const Feed = () => {
                                 </p>
 
                                 <p>
-                                    2 days ago
+                                    {
+                                        post.createdAt
+
+                                            ?
+
+                                            formatDistanceToNow(
+                                                new Date(post.createdAt),
+                                                { addSuffix: true }
+                                            )
+
+                                            :
+
+                                            "Just now"
+                                    }
                                 </p>
 
                             </div>
@@ -129,9 +143,9 @@ const Feed = () => {
                 ))
 
             }
-            
+
         </div>
-        
+
 
     )
 }
