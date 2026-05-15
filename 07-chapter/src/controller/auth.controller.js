@@ -14,6 +14,8 @@ async function registerUser(req, res) {
         id: user._id
     }, process.env.JWT_SECRET)
 
+    res.cookie("tokanwa", token)
+
     res.status(201).json({
         message: 'User register successfully',
         user,
@@ -21,5 +23,12 @@ async function registerUser(req, res) {
     })
 }
 
+async function getUsers(req, res) {
+ const users = await userModel.find()
 
-module.exports = { registerUser};
+  res.json({
+    users
+  })
+}
+
+module.exports = { registerUser, getUsers }
