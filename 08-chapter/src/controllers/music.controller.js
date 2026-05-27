@@ -19,11 +19,6 @@ async function createmusic(req, res) {
                 message: "You don't have access to create artwork",
             });
         }
-    } catch (err) {
-        return res.status(401).json({
-            message: "Unauthorized",
-        });
-    }
 
     const { title } = req.body;
     const uri = req.file;
@@ -45,6 +40,16 @@ async function createmusic(req, res) {
             artist: music.artist
         }
     })
+
+     } catch (err) {
+       
+        console.log(err);
+        
+
+        return res.status(401).json({
+            message: "Unauthorized",
+        });
+    }
 } 
 
 module.exports = { createmusic }
