@@ -4,15 +4,13 @@ const { uploadFile } = require("../Services/storage.service")
 
 
 async function createmusic(req, res) {
-
-    const token = req.cookies.token;
-
+      const token = req.cookies.token;
     if (!token) {
         return res.status(401).json({ message: "Unauthorized" })
     }
 
     try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const decoded = jwt.verify(token, process.env.JWT);
 
         if (decoded.role !== "artist") {
             return res.status(403).json({
@@ -21,14 +19,14 @@ async function createmusic(req, res) {
         }
 
     const { title } = req.body;
-    const uri = req.file;
+    const file = req.file;
      
     const result = await uploadFile(file.buffer.toString('base64'))
         
     const music = await musicModel.create({
         uri: result.url,
         title,
-        artist: decode.id
+        artist: decoded.id
     })
 
     res.status(201).json({

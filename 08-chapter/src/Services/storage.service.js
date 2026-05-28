@@ -6,7 +6,7 @@ const client = new ImageKit({
 });
 
 
-async function uploadfile(file) {
+async function uploadFile(file) {
     const result = await client.files.upload({
         file,
         fileName: "music_" + Date.now(),
@@ -16,4 +16,4 @@ async function uploadfile(file) {
     return result;
 }
 
-module.exports = { uploadfile };
+module.exports = { uploadFile };
