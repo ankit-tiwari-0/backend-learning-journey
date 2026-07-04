@@ -11,9 +11,30 @@ const server = http.createServer((req, res)=>{
 
    //*2 Downloading file in a good way
    
-   const readableStream = fs.createReadStream("sample.txt")
-   readableStream.pipe(res)    //method
+//    const readableStream = fs.createReadStream("sample.txt")
+//    readableStream.pipe(res)    //method
+//    res.end()
 
+
+// -----------2------------
+
+// 1 copy file in bad way ❌
+
+// const file = fs.readFileSync("sample.txt")
+// fs.writeFileSync("output.txt", file)
+// res.end
+
+
+//2  downloadin file in good way
+
+const readstream = fs.createReadStream("sample.txt");
+const writestream = fs.createWriteStream("output.txt");
+
+readstream.on("data", (chank)=>{
+    console.log("CHUNK :", chank);
+    writestream.write(chank)
+    
+})
 
 
       
