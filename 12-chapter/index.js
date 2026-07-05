@@ -1,6 +1,8 @@
 const http = require("http")
 const fs = require("fs")
 
+const {Transform, pipeline} = require("stream")
+
 const server = http.createServer((req, res)=>{
 
 
@@ -41,15 +43,15 @@ const server = http.createServer((req, res)=>{
 // upparcasw
 // ipsum ----> ankit
 
+//1 bad approach
+// const readstream = fs.createReadStream("sample.txt");
+// const writestream = fs.createWriteStream("output.txt");
 
-const readstream = fs.createReadStream("sample.txt");
-const writestream = fs.createWriteStream("output.txt");
 
-
-readstream.on("data", (chunk) =>{
-    const modify = chunk.toString().toUpperCase().replaceAll(/ipsum/gi, "ankit");
-    writestream.write(modify)
-})
+// readstream.on("data", (chunk) =>{
+//     const modify = chunk.toString().toUpperCase().replaceAll(/ipsum/gi, "ankit");
+//     writestream.write(modify)
+// })
 
 res.end()
 
