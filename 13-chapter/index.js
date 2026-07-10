@@ -112,7 +112,24 @@ app.patch("/api/p/:id", (req , res)=>{
     })
 })
 
+app.delete("/api/p/:id", (req, res)=>{
+    const {id} = req.params;
+    
+        const paramid = Number(id);
 
+    const userIndex = data.findIndex((user)=>user.id === paramid);
+
+    if (userIndex === -1){
+       res.status(404).send("user not ");
+    }
+
+    const deletuser = data.splice(userIndex, 1);
+
+    res.status(200).json({
+        message: "user deleted",
+        data: deletuser[0]
+    })
+})
 
 
 app.listen(PORT, (req, res)=>{
