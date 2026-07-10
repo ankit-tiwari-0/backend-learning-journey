@@ -66,9 +66,51 @@ app.post("/app/post", (req, res)=>{
     )
 })
 
+// *3 PUT Request (UPDATE ALL FIELD)
 
+app.put("/api/p/:id", (req , res)=>{
+    const {body , params:{id},} = req;
 
+    const parseId = parseInt(id);
+    const userINDEX = data.findIndex((user)=>user.id === parseId);
 
+    if(userINDEX === -1){
+       res.status(404).send("user Not Found")
+    }
+   
+    data[userINDEX] = {
+        id: parseId,
+        ...body
+    }
+
+    res.status(200).send({
+        message: "User upd",
+        data: data[userINDEX]
+    })
+})
+
+//4.PATCH REquest (update specific field)
+
+app.patch("/api/p/:id", (req , res)=>{
+    const {body , params:{id},} = req;
+
+    const parseId = parseInt(id);
+    const userINDEX = data.findIndex((user)=>user.id === parseId);
+
+    if(userINDEX === -1){
+       res.status(404).send("user Not Found")
+    }
+   
+    data[userINDEX] = {
+        ...data[userINDEX],
+        ...body
+    }
+
+    res.status(200).send({
+        message: "User upd",
+        data: data[userINDEX]
+    })
+})
 
 
 
