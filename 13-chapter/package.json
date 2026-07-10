@@ -1,15 +1,19 @@
-{
+ {
   "name": "13-chapter",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    "start:dev": "nodemon index.js",
+     "start": "nodemon index.js"  },
   "keywords": [],
-  "author": "",
+  "author": "Ankit",
+  "type": "module",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
   }
 }
