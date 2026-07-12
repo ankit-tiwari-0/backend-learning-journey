@@ -1,9 +1,10 @@
 import { Router } from "express";
+import { generateToken } from "../utils/token-utils.js";
 
 const userRouter = Router();
 
 userRouter.get("/generate", (req, res)=>{
-    const token = "token";
+    const token = generateToken();
 
     res.status(200).send({
         message: "Token generated please save it for future",
