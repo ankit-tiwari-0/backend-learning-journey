@@ -4,7 +4,7 @@ import pvt from './router/private.routes.js';
 import fs from "fs";
 import path from 'path';
 import { fileURLToPath } from 'url';
-
+import logMiddleware from './middleware/log.midleware.js';
 
 const app = express();
 
@@ -16,10 +16,15 @@ if (!fs.existsSync(path.join(__dirname, "logs"))) {
     fs.mkdirSync(path.join(__dirname, "logs"))
 }
 
+//! Global
+app.use(logMiddleware)
+
 //InBuild Middleware
 app.use(express.json());
 app.use("/public", publicRoutes)
 app.use("/pvt", pvt)
+
+
 
 app.listen(3000, (req , res)=>{
     
