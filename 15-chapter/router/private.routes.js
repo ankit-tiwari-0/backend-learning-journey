@@ -1,4 +1,5 @@
 import { Router } from "express";
+import authMiddleware from "../middleware/authMiddleware.js";
 
 const pvt = Router();
 
@@ -6,7 +7,7 @@ const pvt = Router();
 
 pvt.get("/dashboadr", (req, res)=>{
     res.status(200).send({
-        message: "welcome to dash board"
+        message: `welcome to dash board $(req.user.name)`,
     })
 })
 
