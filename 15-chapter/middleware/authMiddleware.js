@@ -3,7 +3,7 @@ import { validatetoken } from "../utils/token-utils.js";
 const authMiddleware = (req , res , next)=>{
     const token = req.headers['authorization'];
 
-    if(token && validateToken(token)){
+    if(token && validatetoken(token)){
         req.user = {name:"Suraj" , id:1};
         next()
     }

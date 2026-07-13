@@ -5,9 +5,9 @@ const pvt = Router();
 
 // dashboard ( Accesstoken)
 
-pvt.get("/dashboadr", (req, res)=>{
+pvt.get("/dashboadr",authMiddleware, (req, res)=>{
     res.status(200).send({
-        message: `welcome to dash board $(req.user.name)`,
+        message: `welcome to dash board ${req.user.name}`,
     })
 })
 
