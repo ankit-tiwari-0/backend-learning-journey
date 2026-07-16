@@ -24,6 +24,14 @@ app.get("/", (req, res)=>{
     res.status(200).send("helooo")
 })
 
+app.get("/log", (req, res)=>{
+       req.session.user = {
+        name: "ankiit",
+        age: 22,
+        email: "@nnn"
+       }
+       res.send(`${req.session.user.name} is logged`)
+})
 
 
 app.listen(3000, ()=>{
