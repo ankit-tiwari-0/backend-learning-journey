@@ -3,4 +3,25 @@ import session from 'express-session'
 import cookieParser from 'cookie-parser'
 
 
-a
+const app = express()
+
+//! Global pack
+
+app.use(cookieParser)
+app.use(session)
+
+
+
+
+
+
+
+
+
+
+
+
+app.listen(3000, ()=>{
+    console.log("server chalta hai naa");
+    
+})
