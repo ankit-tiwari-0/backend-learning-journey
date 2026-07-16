@@ -33,6 +33,17 @@ app.get("/log", (req, res)=>{
        res.send(`${req.session.user.name} is logged`)
 })
 
+app.get("/logout", (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            return res.status(500).send("Logout failed");
+        }
+
+        res.clearCookie("connect.sid");
+
+        res.send("Logged out");
+    });
+});
 
 app.listen(3000, ()=>{
     console.log("server chal rha hai");
