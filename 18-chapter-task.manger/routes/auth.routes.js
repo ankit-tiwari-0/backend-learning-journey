@@ -4,7 +4,7 @@ import { login, logout } from "../controller/auth.controller.js";
 
 const router = Router()
 
-router.post("login",login)
+router.post("/login",login)
 
 
 router.get("/logout", logout)

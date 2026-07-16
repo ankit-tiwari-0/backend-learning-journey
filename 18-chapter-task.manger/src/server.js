@@ -8,7 +8,17 @@ const app = express()
 
 //! Global pack
 app.use(express.json())
-
+app.use(session({
+    secret: "your-secret-key",
+    saveUninitialized: false,
+    resave:false,
+    cookie:{
+        httpOnly: true,
+        secure: false,
+        maxAge:1000*60*60  
+    }
+}))
+app.use(cookieParser())
 
 
 //ROutes
