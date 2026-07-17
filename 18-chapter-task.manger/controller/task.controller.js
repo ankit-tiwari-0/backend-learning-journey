@@ -30,10 +30,44 @@ export const createTask = async(req , res)=>{
 
 }
 
-export const updateTask = ()=>{
+export const updateTask = (req, res) => {
 
-}
+    const { id } = req.params;
+    const { title, description, completed } = req.body;
 
+    const tasks = readTask();
+
+    const task = tasks.find(
+        task =>
+            task.id === Number(id) &&
+            task.username === req.session.user.username
+    );
+
+    if (!task) {
+        return res.status(404).json({
+            message: "Task not found"
+        });
+    }
+
+    if (title !== undefined) {
+        task.title = title;
+    }
+
+    if (description !== undefined) {
+        task.description = description;
+    }
+
+    if (completed !== undefined) {
+        task.completed = completed;
+    }
+
+    writeTask(tasks);
+
+    res.json({
+        message: "Task updated",
+        task
+    });
+};
 export const deleteTask = ()=>{
 
 }
