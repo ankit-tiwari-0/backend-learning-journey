@@ -10,7 +10,23 @@ export const getAlltask = async(req , res)=>{
     res.json(task.filter((task)=>task.username === req.session.user.username))
 }
 
-export const createTask = ()=>{
+export const createTask = async(req , res)=>{
+
+     const {title , description} = req.body;
+    const tasks = await readTask();
+
+    const newTask = {
+        id:Date.now(),
+        username:req.session.user.username,
+        title,
+        description,
+        completed:false
+    }
+
+    tasks.push(newTask);
+    await writeTask(tasks);
+
+    res.status(201).json(newTask)
 
 }
 

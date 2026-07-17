@@ -2,6 +2,7 @@ import express from 'express'
 import session from 'express-session'
 import cookieParser from 'cookie-parser'
 import authroute from '../routes/auth.routes.js'
+import Taskroutes from '../routes/task.routes.js'
 
 
 const app = express()
@@ -28,10 +29,7 @@ app.get("/", (req , res)=>{
 })
 
 app.use("/auth", authroute)
-
-
-
-
+app.use("/task", Taskroutes)
 
 
 
