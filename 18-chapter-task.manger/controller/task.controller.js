@@ -68,6 +68,28 @@ export const updateTask = (req, res) => {
         task
     });
 };
-export const deleteTask = ()=>{
 
-}
+export const deleteTask = (req, res) => {
+
+    const { id } = req.params;
+
+    const tasks = readTask();
+
+    const updatedTasks = tasks.filter(
+        task =>
+            !(task.id === Number(id) &&
+              task.username === req.session.user.username)
+    );
+
+    if (tasks.length === updatedTasks.length) {
+        return res.status(404).json({
+            message: "Task not found"
+        });
+    }
+
+    writeTask(updatedTasks);
+
+    res.json({
+        message: "Task deleted"
+    });
+};
