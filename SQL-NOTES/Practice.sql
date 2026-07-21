@@ -72,3 +72,16 @@ VALUES
 
 SELECT * FROM Employee;
 SELECT * FROM Department;
+
+CREATE TABLE Employeess (
+    EmployeeID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Age INT,
+    CHECK (Age >= 18) -- Ensures that age is 18 or older
+);
+
+CREATE TABLE Eployees (
+    EmployeeID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Age INT DEFAULT 30 -- Default age is 30 if no value is provided
+);
