@@ -1,17 +1,10 @@
 import { Router } from "express";
+import UserModel from "./model/user.model.js";
 
 const router = Router();
 
-router.post("/user", (req , res)=>{
-   try {
-    
-   } catch (error) {
-    console.log(error);
-    res.status(500).json({ 
-        success:false,
-        message:error.message 
-    })
-   }
+router.post("/user", async (req , res)=>{
+   
 
 })
 
