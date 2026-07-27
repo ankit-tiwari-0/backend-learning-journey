@@ -7,7 +7,7 @@ const pvt = Router();
 
 pvt.get("/dashboadr",authMiddleware, (req, res)=>{
     res.status(200).send({
-        message: `welcome to dash board ${req.user.name}`,
+        message: `welcome to dash board ${req.user.name}  `,
     })
 })
 
