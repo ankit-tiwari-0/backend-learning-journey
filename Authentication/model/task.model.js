@@ -12,5 +12,3 @@ const taskSchema = new mongoose.Schema({
 }, {timestamps: true})
 
 const TASK = mongoose.model("Task", taskSchema)
-
-1032
