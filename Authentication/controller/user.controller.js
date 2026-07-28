@@ -1,3 +1,4 @@
+import { registerUser } from "../service/user.service.js";
 
 
 export const signup = async ()=>{
