@@ -1,4 +1,4 @@
-import { registerUser } from "../service/user.service.js";
+import { loginUser, registerUser } from "../service/user.service.js";
 
 
 export const signup = async (req , res)=>{
@@ -12,6 +12,8 @@ export const signup = async (req , res)=>{
             data:user
         })
     } catch (error) {
+        console.log(error);
+        
      res.status(500).json({
         success: false,
         messsage: "errorr",
@@ -33,6 +35,8 @@ export const login = async(req , res)=>{
         message:"Login Successfull"
     })
     } catch (error) {
+        console.log(error);
+        
         res.status(500).json({
             success:false,
             message:"error Logging in",

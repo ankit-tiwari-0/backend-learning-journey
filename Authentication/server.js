@@ -7,20 +7,22 @@ import router from './router/user.router.js'
 dotenv.config()
  const app = express()
  app.use(express.json())
- app.use("/api/user", router)
-
+ 
  app.use(
     session({
-        secret: process.env.SECRET_KEY,
-        resave:false,
-        saveUninitialized:true,
-        cookie:{maxAge:600000}
-    })
- )
-
+       secret: process.env.SECRET_KEY,
+       resave:false,
+       saveUninitialized:true,
+       cookie:{maxAge:600000}
+      })
+   )
+   
+   app.use("/api/user", router)
 
 connectDB()
  app.listen(3000, ()=>{
     console.log("server is running");
     
  })
+
+ 16
