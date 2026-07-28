@@ -1,4 +1,5 @@
 import {Router} from 'express'
+import { login, logout, signup } from '../controller/user.controller.js'
 
 
 const router = Router()
@@ -8,9 +9,9 @@ const router = Router()
 //Routes
 
 
-router.post("/signup")
-router.post("/login")
-router.post("/logout")
+router.post("/signup", signup)
+router.post("/login", login)
+router.post("/logout", logout)
 
 
 

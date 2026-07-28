@@ -2,10 +2,12 @@
 import dotenv from 'dotenv'
 import connectDB from './db/db.js'
 import session from 'express-session'
+import router from './router/user.router.js'
 
 dotenv.config()
  const app = express()
  app.use(express.json())
+ app.use("/api/user", router)
 
  app.use(
     session({
