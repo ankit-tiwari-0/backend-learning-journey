@@ -1,7 +1,7 @@
 import { registerUser } from "../service/user.service.js";
 
 
-export const signup = async ()=>{
+export const signup = async (req , res)=>{
     const {username, password} = req.body;
 
     try {
