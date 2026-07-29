@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import connectDB from './db/db.js'
 import session from 'express-session'
 import router from './router/user.router.js'
+import routerr from './router/task.router.js'
 
 dotenv.config()
  const app = express()
@@ -18,11 +19,10 @@ dotenv.config()
    )
    
    app.use("/api/user", router)
+   app.use("/api/task", routerr)
 
 connectDB()
  app.listen(3000, ()=>{
     console.log("server is running");
     
  })
-
- 16
