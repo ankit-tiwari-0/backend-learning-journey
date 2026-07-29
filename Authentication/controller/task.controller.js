@@ -14,8 +14,8 @@ export const addTask = async (req , res)=>{
     } catch (error) {
         res.status(500).json({
         success: false,
-        messsage: "errorr",
-        error: error.messsage
+        messsage: "errorrssss",
+        error: error.message
      })   
     }
 }
@@ -23,7 +23,7 @@ export const addTask = async (req , res)=>{
 
 export const fetchTask = async (req, res) => {
     try {
-        const tasks = await getTasks(req.session.userID);
+        const tasks = await getTasks(req.session.userId);
 
         res.status(200).json(tasks);
     } catch (error) {
