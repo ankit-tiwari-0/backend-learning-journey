@@ -1,10 +1,22 @@
-import expess from "express"
+import express from "express";
+import mongoose from "mongoose";
+import dotenv from "dotenv"
 
-const app = expess()
+dotenv.config()                                              
+const app = express();
 
 
+app.use(express.json());
 
-app.listen(3000, ()=>{
-    console.log("server is runnning");
-    
-}) 
+mongoose
+  .connect(process.env.MONGO)
+  .then(() => {
+    console.log("MongoDB Connected");
+  })
+  .catch((err) => {
+    console.log("MongoDB Error:", err.message);
+  });
+
+app.listen(3000, () => {
+  console.log("Server is running on port 3000");
+});
