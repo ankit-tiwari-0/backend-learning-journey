@@ -142,3 +142,12 @@ dist
 .svelte-kit
 
 # End of https://www.toptal.com/developers/gitignore/api/node
+
+key/
+# RSA Keys
+*.pem
+
+# Or specific files
+public.pem
+pvt.pem
+private.pem
