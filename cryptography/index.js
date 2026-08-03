@@ -1,12 +1,11 @@
 import express from "express"
 import crypto from "crypto"
 import { type } from "os"
-import { log } from "console"
 
-const app = express()
 
-app.use(express.json())
 
+const app = express();
+app.use(express.json());
 
 // Generate RSA Key Pair
 const generateKeys = () => {
@@ -40,13 +39,12 @@ const decrypt = (privateKey, encryptedMessage) => {
   return decrypted.toString("utf8");
 };
 
-
-const keys = generateKeys()
+// Generate Key Pair
+const keys = generateKeys();
 const publicKey = keys.publicKey;
 const privateKey = keys.privateKey;
 
-
-
+// API Routes
 app.post("/encrypt", (req, res) => {
   const { message } = req.body;
   const encrypted = encrypt(publicKey, message);
@@ -59,10 +57,10 @@ app.post("/decrypt", (req, res) => {
   res.json({ decrypted });
 });
 
-app.listen(3000, () =>{
-    console.log("sevef is running");
-    console.log("Public key: \n", publicKey);
-    console.log("privt \n", privateKey); 
-    
-    
-})
+// Start Server
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+  console.log("Public Key:\n", publicKey);
+  console.log("Private Key:\n", privateKey);
+});
