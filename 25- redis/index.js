@@ -7,8 +7,17 @@ const app = express()
 
 
 
-app.get("/", (req, res)=>{
-    res.send("ok")
+app.get("/", async(req, res)=>{
+    const cachedData = await redis.get("todoList");
+
+    if (cachedData) {
+        return res.json(JSON.parse(cachedData))
+    }
+    const {data} = await axios.get("https://jsonplaceholder.typicode.com/users")
+
+    await redis.set("todoList", JSON.stringify(data) );
+    await redis.expire("todoList", 30)
+    res.json(data)
 })
 
 
