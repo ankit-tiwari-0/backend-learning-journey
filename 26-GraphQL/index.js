@@ -3,25 +3,43 @@ import { ApolloServer } from "@apollo/server"
 import { expressMiddleware } from "@as-integrations/express5"
 import bodyParser from "body-parser"
 import cors from "cors"
-
+import axios from "axios"
 
 async function startServer(params) {
     const app = express()
    
     const typeDefs = `
-    type Query {
-       hello:String
-       name:String
+    type Todo {
+        id: ID!
+        title: String!
+        completed: Boolean
     }
-    `
-    const resolvers = {
-        Query:{
-            hello:()=>"hello world!",
-            name:()=>"ankit"
-        }
+    
+    type getUser {
+      id: ID!
+      name: String
+      username: String
+      email: String
+      phone: String
     }
 
-    const server = new ApolloServer({typeDefs, resolvers})
+
+    type Query {
+        getTodoss: [Todo]
+        getUser:[getUser]
+    }
+`;
+
+const resolvers = {
+    Query: {
+        getTodoss: async () =>
+            (await axios.get("https://jsonplaceholder.typicode.com/todos")).data,
+        getUser: async () =>
+            (await axios.get("https://jsonplaceholder.typicode.com/users")).data,
+    }
+};
+
+const server = new ApolloServer({ typeDefs, resolvers });
 
     await server.start()
     app.use(bodyParser.json());
